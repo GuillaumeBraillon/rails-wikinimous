@@ -1,0 +1,23 @@
+<%= form_with(model: article) do |form| %>
+  <% if article.errors.any? %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <h2 class="alert-heading fw-bold"><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+      <ul class="mb-0 list-unstyled">
+        <% article.errors.each do |error| %>
+          <li class="mb-1 text-danger"><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="mb-3">
+    <%= form.label :title, class: "form-label fw-bold" %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :content, class: "form-label fw-bold" %>
+    <%= form.text_area :content, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>
